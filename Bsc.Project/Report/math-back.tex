@@ -1,0 +1,430 @@
+\section{پیوست: مبانی ریاضی مکانیک کوانتومی}\label{chapter7}
+دراین بخش با ریاضیات مورد نیاز برای فهم چارچوب نظری مکانیک کوانتومی آشنا می‌شویم.
+  \subsection{فضای برداری}
+  مجموعه $V$ را یک فضای برداری روی میدان $F$ می‌گوییم هرگاه دو عمل زیر تعریف شده 
+  \begin{equation}
+  	+ : V \times V \rightarrow V \quad , \quad . : F \times V \rightarrow V
+  \end{equation}
+  و دارای خواص زیر باشند: 
+   \begin{equation}
+   \begin{split}
+   A_{1}: & \quad x + y = y + x\\
+   A_{2}: & \quad (x + y) + z = x + (y + z)\\
+   A_{3}: & \quad \exists 0 \in V | 0 + x = x\\
+   A_{4}: & \quad \forall x \in V | -x + x = 0\\
+   M_{1}: & \quad \alpha(x+y) = \alpha x + \alpha y\\
+   M_{2}: & \quad (\alpha + \beta)x = \alpha x + \beta x\\
+   M_{3}: & \quad \alpha(\beta x) = (\alpha\beta) x\\
+   M_{4}: & \quad 1x = x
+   \end{split}
+   \end{equation}
+   بسته به این که $F$ میدان اعداد حقیقی یا میدان اعداد مختلط باشد، فضای برداری $V$ را فضای برداری مختلط یا حقیقی گوییم. ازاین به بعد منحصراً با فضاهای برداری مختلط کار می‌کنیم. 
+   
+\begin{example}
+مجموعه‌های زیر هرکدام یک فضای برداری هستند. 
+\begin{enumerate}
+	\item $R^{n}$ یا مجموعه $n$-تایی‌های مرتب حقیقی
+	\item $C^{n}$ یا مجموعه $n$-تایی‌های مرتب مختلط
+	\item $M_{m \times n}(F)$ یا مجموعه ماتریس‌های $m \times n$ که درایه‌های آن عناصر یک میدان $F$ هستند.
+	\item $P_{n}([a,b])$ یا مجموعه چندجمله‌ای‌های حقیقی مرتبه $n$ از متغیر $x$ که در فاصله $[a,b]$ تعریف شده‌اند. 
+	\item $C^{k}[a,b]$ یا مجموعه توابع حقیقی یا مختلط $k$ بار مشتق‌پذیر در بازه $[a,b]$.
+\end{enumerate}  
+\end{example} 
+   
+\begin{definition}
+   هرگاه $V$ یک فضای برداری و $W \subset V$ یک زیر مجموعه از آن باشد، آنگاه $W$ را یک زیرفضای $V$ گوییم اگر $W$ نسبت به جمع بردارها و ضرب اعداد در بردارها بسته باشد. 
+   \end{definition}
+   
+   \subsection{ضرب داخلی و اندازه}
+    \textbf{تعریف:}
+    در یک فضای برداری $V$ یک عمل دوتایی $\langle,\rangle : V \times V \rightarrow C$ را یک ضرب داخلی می‌نامیم هرگاه در شرایط زیر صدق کند:
+    \begin{equation}
+    	\langle x , y + \alpha z \rangle = \langle x , y \rangle + \alpha \langle x , z \rangle
+    \end{equation}
+    
+    \begin{equation}
+    	\langle x , y \rangle = \langle y , x \rangle^{*}
+    \end{equation}
+    \begin{equation}
+    	\langle x , x \rangle \geq 0
+    \end{equation}
+    \begin{equation}
+    	\langle x , x \rangle =  0 \rightarrow x = 0
+    \end{equation}
+    فضایی را که به ضرب داخلی مجهز شده باشد یک فضای برداری ضرب داخلی می‌گوییم. 
+    \begin{theorem}
+    کوشی-شوارتز:
+     در فضای ضرب داخلی داریم:
+\begin{equation}
+ 	|\langle x,y \rangle | = \langle x,x \rangle \langle y,y \rangle .
+ \end{equation}
+    \end{theorem}
+
+\begin{definition}{اندازه یک بردار: }
+در هر فضای ضرب داخلی، می‌توان اندازه یک بردار را به شکل زیر تعریف کرد:
+\begin{equation}
+	|x| := \sqrt{\langle x,x \rangle}
+\end{equation}
+\end{definition}
+با توجه به نامساوی کوشی-شوارتز می‌توان نوشت:
+\begin{equation}
+	 	|\langle x,y \rangle | = |x||y|
+\end{equation}
+
+
+\begin{definition}{فضای نرم یا اندازه‌دار: }
+یک فضای برداری $V$ که در آن نگاشت $\| \quad \| : V \rightarrow R$ تعریف شده باشد را فضای برداری اندازه‌دار\footnote{Normed Vector Space} می‌گوییم هرگاه شرایط زیر برقرار باشد:
+\begin{equation}
+	\| v \| \geq 0 \quad \forall v
+\end{equation}
+\begin{equation}
+	\| v \| = 0 \rightarrow v = 0
+\end{equation}
+\begin{equation}
+	\| \alpha v \| = |a| \|v \|
+\end{equation}
+\begin{equation}
+\| v + w \| \leq \| v \| + \| w \|
+\end{equation}
+\end{definition}
+هرفضای ضرب داخلی باهمان اندازه‌ای که از روی ضرب داخلی تعریف می‌شود یک فضای اندازه‌دار است، ولی یک فضای اندازه‌دار الزاماً یک فضای ضرب داخلی نیست. به عبارت دیگر، اندازه لزوما از روی ضرب داخلی تعریف نشده است. برای مثال، برای فضای توابع $C[a,b]$ نگاشت $\| f \| = sup_{x \in [a,b]} | f(x)|$ یک اندازه است که از روی ضرایب داخلی تعریف نشده‌ است. 
+
+\subsection{پایه}
+پایه به‌هنجار\footnote{Normal} $\{ e_{i}, i = 1,...,N\}$ را برای فضای برداری $V$ در نظر می‌گیریم. به‌هنجار بودن به معنای آن است که $\langle e_{i},e_{j} \rangle = \delta_{ij}$. هر بردار $x \in V$  را می‌توان بر حسب این بردار‌های پایه بسط داد و نوشت:
+\begin{equation}
+	x = \sum_{i = 1} ^{N} x_{i}e_{i}
+\end{equation}
+بدیهی است که 
+\begin{equation}
+	x_{i} = \langle e_{i},x \rangle
+\end{equation}
+
+
+پایه‌ها را می‌توان با یک ماتریس تبدیل پایه دو بعدی مانند $S$ به یک دیگر تبدیل کرد. برای مثال، فرض کنید که بردار $x$ را که در پایه $e_{i}$ است را می‌خواهیم در پایه $e^{'}_{i}$ بنویسیم. لازم است درایه‌های ماتریسی آن را استخراج کنیم. در نظر بگیرید $e^{'}_{i} = S_{li}e_{l}$:
+\begin{equation}
+x^{'}_{i} = \langle e^{'}_{i},x \rangle = \langle S_{li}e_{l}, x \rangle = S_{li}x_{l}
+\end{equation}
+و یا به صورت فشرده‌تر:
+\begin{equation}
+	x^{'} = xS.
+\end{equation}
+از آنجا که پایه‌های $\{e_{i}\}$ و $\{e^{'}_{i}\}$ هر دو بهنجار هستند به راحتی نتیجه می‌گیریم که ماتریس تبدیل پایه $S$ در شرط زیر صدق می‌کند:
+\begin{equation}
+S^{\dagger}S = I
+\end{equation}
+چنین ماتریسی را ماتریس‌های یکانی\footnote{Unitary} می‌گوییم.
+
+که در آن $S^{\dagger}$ ماتریس الحاقی\footnote{Conjugate Transpose} $S$ است و چنین تعریف می‌شود:
+
+\begin{equation}
+S^{\dagger} = (S^{*})^{T} \quad or \quad S^{\dagger}_{ij} = (S^{*})_{ji}
+\end{equation}
+همچنین هرگاه ماتریس با الحاقی خود برابر باشد، آن را ماتریس هرمیتی می‌گوییم: 
+\begin{equation}
+	S^{\dagger} = S.
+\end{equation}
+%TODO example??
+
+\subsection{فضای کامل و هیلبرت}
+\begin{definition}{دنباله کوشی:}
+در یک فضای برداری، دنباله‌ای از بردارها مانند $\{x_{1},x_{2},...,x_{n},...\}$  درنظر می‌گیریم. این دنباله، یک دنباله کوشی نامیده می‌شود هر گاه فاصله بین  بردارها به تدریج کم شود؛ به عبارت دقیق‌تر، هرگاه به ازای هر $\epsilon > 0$ عددی مانند $N$ یافت شود که 
+\begin{equation}
+	\forall m,n > N \rightarrow |x_{n} - x_{m} | \leq \epsilon
+\end{equation} 
+\end{definition}
+در یک فضای برداری، لزوما حد کوشی در خود فضا قرار ندارد. مثلا، هرگاه میدان اعداد گویا را به عنوان یک فضای برداری روی خودش درنظر بگیریم، دنباله $\{ ( 1 + \frac{1}{n})^{n} \}$ اگرچه یک دنباله کوشی است، ولی حد آن در میان اعداد گویا قرار ندارد. با افزودن اعداد گنگ به میدان، یک فضای برداری میدان حقیقی به دست می‌آید که کامل است. 
+
+\begin{definition}
+یک فضای برداری را فضای برداری کامل گوییم هرگاه حد دنباله کوشی را در خود داشته باشد. 
+\end{definition}
+ 
+\begin{definition}
+ یک فضای برداری با ضرب داخلی کامل را فضای هیلبرت\footnote{Hilbert Space}  می‌نامیم. از آنجایی که میدان اعداد حقیقی و مختلط کامل است، می‌توان ثابت کرد هر فضا با بعد محدود روی این میدان‌ها هیلبرت است. 
+ \end{definition}
+ 
+\subsection{تبدیلات خطی}
+در یک فضای برداری  $V$، نگاشت 
+$\hat{T} : V \rightarrow V$ را یک تبدیل خطی یا یک عملگر خطی\footnote{Linear Operator} می‌گوییم هرگاه داری خاصیت زیر باشد:
+\begin{equation}
+	\hat{T}(x + \alpha y ) = \hat{T}(x) + \alpha \hat{T}(y) \quad \forall \alpha \in F, x,y \in V
+\end{equation}
+ماتریس $T$ با درایه‌های $T_{mn}$ را ماتریس مربوط به تبدیل خطی $\hat{T}$ در پایه $\{e_{i}\}$ می‌گوییم. هرگاه پایه فوق به‌هنجار باشد، می‌توانیم بنویسیم 
+\begin{equation}
+	\langle e_{j}, \hat{T}e_{i} \rangle = T_{ji}
+\end{equation}
+تاثیر تابع $\hat{T}$ روی بردار $x$ عبارت است از:
+\begin{equation}
+	\hat{T}x = \hat{T}x_{i}e_{i} = x_{i}(\hat{T}e_{i}) = x_{i}T_{ji}e_{j} = (T_{ji}x_{i})e_{j} = (Tx)_{j}e_{j}
+\end{equation}
+که برابر با ضرب از سمت چپ ماتریس $T$ روی $x$ است. 
+
+همچنین، با تعویض پایه، ماتریس تغییر می‌یابد:
+\begin{equation}
+	T^{'}_{ij} = \langle e^{'}_{i},\hat{T}e^{'}_{j} \rangle = \langle S_{li}e_{l},\hat{T}S_{mj}e_{m} \rangle = S^{*}_{li}T_{lm}S_{mj}
+\end{equation}
+که به صورت زیر قابل بازنویسی است:
+\begin{equation}
+T^{'} = S^{\dagger}TS
+\end{equation}
+
+هرگاه $A$ و $B$ دو تبدیل خطی دلخواه روی $V$ و $\alpha$ عددی دلخواه متعلق به میدان $F$ باشد، آنگاه $\alpha A+B$ نیز یک تبدیل خطی روی $V$ است. درنتیجه، مجموعه تبدیلات خطی روی $V$ تشکیل یک فضای برداری می‌دهند که آن را با $End(V)$ نشان می‌دهیم. همچنین، ضرب دو تبدیل خطی با تعریف 
+\begin{equation}
+	(AB)x := A(Bx)
+\end{equation}
+ نیز یک تبدیل خطی است. پس می‌توان گفت که $End(V)$ نه تنها یک فضای برداری است بلکه یک جبر است که خاصیت شرکت پذیری دارد ($(AB)C = A(BC)S$) ولی جبر جابه‌جایی ندارد ($AB \ne BA$) اما یکه‌دار\footnote{Unital} است که یعنی عنصری دارد مانند $I$ که $AI = IA = A$. 
+ 
+ دیدیم که به یک عملگر خطی می‌توان یک ماتریس نسبت داد. وقتی که پایه فضا را معین می‌کنیم، بین فضای تبدیلات خطی یعنی $End(V)$ و فضای ماتریس‌های $M_{n \times n}(C)$ یک نگاشت یک به یک خواهیم داشت. بنابراین یک تبدیل خطی و ماتریس آن به جای هم قابل استفاده هستند. همچنین، با تبدیل زیر می‌توان فضای تبدیل خطی روی $V$ را به یک فضای ضرب داخلی تبدیل کرد:
+  \begin{equation}
+  	\langle A,B \rangle = tr(AB^{\dagger})
+  \end{equation}
+  که در آن رد\footnote{Trace} ماتریس $tr(A)$ برای ماتریس مربعی $A$ برابر با مجموعه درایه‌های قطر اصلی است.
+  
+  \subsection{جمع نیمه‌مستقیم دو زیرفضا}
+  
+\begin{definition}
+  هرگاه $V$ یک فضای برداری و $U$ و $W$ دو زیرفضای آن باشند، $U + W$ را به عنوان مجموعه زیر تعریف می‌کنیم:
+  \begin{equation}
+  	U + W := \{ v | v = u + w, u \in U, w \in W \}
+  \end{equation}
+   واضح است که $U + W$ نیز یک زیرفضا برای $V$ است. 
+   \end{definition}
+ \begin{definition}
+   فرض کنید که $V$ یک فضای برداری و $W$ و $U$ دو زیرفضای آن باشند به طوری که:
+   \begin{enumerate}
+   \item $V = W + U$
+   \item تنها بردار مشترک $U$ و $W$ بردار صفر باشد. 
+   \end{enumerate}
+   در این صورت $V$ جمع نیمه‌مستقیم\footnote{Semi-direct Sum} $U$ و $W$ می‌گوییم و می‌نویسیم 
+   \begin{equation}
+   V = U \oplus W
+   \end{equation}
+   \end{definition}
+   \begin{theorem}
+   $V = W \oplus U$ اگر و تنها اگر هر بردار $v \in V$ را بتوان به صورت $u + w$ یکتایی نوشت که در آن $u \in U$  و  $w \in W$. 
+   \end{theorem}
+   \begin{theorem}
+   اگر $V = U + W$ آنگاه $dim(V) = dim(U) + dim(W)$. 
+   \end{theorem}
+   \begin{definition}
+   فرض کنید که $V = V_{1} \oplus V_{2} \oplus ... \oplus V_{r}$. در این صورت، هر بردار $v \in V$ به صورت یکتای $v = v_{1} + v_{2} + ... + v_{r}$ تجزیه می‌شود. $P_{j}$ را عملگری تعریف کنید که:
+   \begin{equation}
+   		P_{j}v = v_{j}
+   \end{equation}
+   در این صورت، $P_{j}$ را عملگر تصویر روی زیرفضای  $V_{j}$ می‌خوانیم. 
+   \end{definition}
+   \begin{theorem}
+   عملگرهای تصویری\footnote{Image Operators} خواص زیر را دارند:
+   \begin{enumerate}
+   	\item $P_{j}P_{k} = \delta_{jk}P_{j}$
+   	\item $\sum_{j=1}^{r} P_{j} = I$
+   \end{enumerate}
+   \end{theorem}
+   \begin{theorem}
+   هرگاه $V$ یک فضای ضرب داخلی باشد و $V = \bigoplus_{j=1}^{r} V_{j}$ که در آن $V_{j}$ها بر هم عمود هستند، آنگاه عملگرهای $P_{j}$ هرمیتی\footnote{Hermitian} هستند. 
+   \end{theorem}
+   \subsection{مساله ویژه‌مقدار}
+   عملگر $T: V \rightarrow V$ را درنظر می‌گیریم. مساله ویژه‌مقدار\footnote{Eigenvalue} عبارت است از یافتن بردارهای غیرصفری که تحت اثر $T$ به مضربی از خود تبدیل بشوند: 
+   \begin{equation}
+   Tx = \lambda x
+   \end{equation}
+    بردار $x$ غیرصفر خواهد بود هرگاه ماتریس $T - \lambda I$ وارون‌پذیر نباشد، یعنی این‌که
+    \begin{equation}
+    	det(T-\lambda I) = 0
+    \end{equation}
+    این معادله، یک معادله درجه $N$ است که در حوزه اعداد مختلط حتما $N$ جواب مانند  $\{ \lambda_{i}, i = 1,...,N\} $ دارد که به آن‌ها ویژه‌مقدارهای تبدیل $T$ گوییم. این جواب‌ها لزوما با هم متفاوت نیستند. 
+    
+    بردار مربوط به $\lambda_{i}$ که در معادله $Tv_{i} = \lambda_{i} v_{i}$ صدق می‌کند را ویژه‌بردار\footnote{Eigenvector} متناظر با آن ویژه‌مقدار می‌خوانیم. هرگاه $x$ و $y$ ویژه‌بردارهای مربوط به $\lambda$ باشند، بدیهی است که هر ترکیب خطی از آن‌ها هم ویژه‌برداری از $\lambda$ است. بنابراین، مجموعه بردارهای متعلق به یک ویژه‌مقدار تشکیل یک زیرفضا را می‌دهند که به آن ویژه‌فضای\footnote{Eigenspace} آن ویژه‌مقدار می‌گویند. 
+    
+    \subsection{عملگرهای هرمیتی، یکانی و به‌هنجار}
+    
+    \begin{definition}
+    در یک فضای ضرب داخلی، الحاقی یک عملگر $T$ عملگری مانند $T^{\dagger}$ است که در شرط زیر صدق کند: 
+    \begin{equation}
+    	\langle v,Tw \rangle = \langle T^{\dagger}v,w \rangle
+    \end{equation}
+    \end{definition}
+    با استفاده از این تعریف می‌توان به راحتی خواص زیر را ثابت کرد:
+    \begin{enumerate}
+    	\item الحاقی یک عملگر خطی خود نیز یک عملگر خطی است.
+    	\item $(cA + B)^{\dagger} = c^{*}A^{\dagger} + B^{\dagger}$
+    	\item $AB)^{\dagger} = B^{\dagger}A^{\dagger}$
+    	\item $(A^{\dagger})^{\dagger} = A$
+    \end{enumerate}
+     
+      \begin{definition}
+     در یک فضای ضرب داخلی عملگر هرمیتی به عملگری گفته می‌شود که در شرط $T^{\dagger} = T$ صدق کند. عملگر پادهرمیتی به عملگری گفته می‌شود که در شرط $T^{\dagger} = -T$ صدق کند. 
+     \end{definition}
+     \begin{definition}
+     در یک فضای ضرب داخلی، عملگر یکانی $U$ به عملگری گفته می‌شود که ضرب داخلی بردارها رو حفظ کند، یعنی 
+      \begin{equation}
+      	\langle Uv,Uw \rangle = \langle v,w \rangle
+      \end{equation}
+      چنین عملگری در شرط $UU^{\dagger} = U^{\dagger}U$ صدق می‌کند. 
+      \end{definition}
+      \begin{definition}
+      عملگر نرمال یا به‌هنجار عملگری است که با الحاقی خود جابه‌حا شود. عملگرهای هرمیتی و یکانی نرمال هستند. 
+      \begin{equation}
+      	AA^{\dagger} = A^{\dagger}A
+      \end{equation}
+      \end{definition}
+      \begin{theorem}
+      فرض کنید که $A$ یک عملگر به‌هنجار است. در این صورت اگر $Ax = \lambda x$ آنگاه $A^{\dagger} x = \lambda^{*} x$.
+      \end{theorem}
+      \textbf{نتیجه: }
+      ویژه‌مقادیر یک عملگر هرمیتی حقیقی هستند. 
+      
+      \begin{theorem}
+      ویژه‌بردارهای متناظر با ویژه‌مقدارهای متمایز یک عملگر به‌هنجار بر هم عمودند. 
+      \end{theorem}
+      \begin{definition}
+      عملگر مثبت نیمه معین\footnote{Positive Semidefinite} عملگری است که
+       \begin{equation}
+       	\forall v \in V: \quad \langle x,Tx \rangle \geq 0
+       \end{equation}
+       همچنین عملگر مثبت معین\footnote{Definite Positive} عملگری است که
+        \begin{equation}
+       	\forall v \in V: \quad \langle x,Tx \rangle > 0
+       \end{equation} 
+       \end{definition}
+
+  اگر $f: \mathbb{R} \rightarrow \mathbb{R}$ یک تابع و $A: \mathcal{H} \to \mathcal{H}$ عملگری هرمیتی و به صورت زیر باشد:
+    \begin{equation}
+    	A = \sum_{i=0}^{d-1} \lambda_{i} \dyad{v_{i}}{v_{i}}
+    \end{equation}
+    آنگاه تعریف می‌کنیم: 
+    \begin{equation}
+    	f(A) := \sum_{i=0}^{d-1} f(\lambda_{i}) \dyad{v_{i}}{v_{i}}
+    \end{equation}
+    
+    توجه کنید که ویژه‌مقادیر $f(A)$ برابر با $f(\lambda_{i})$ها هستند که $\lambda_{i}$ها ویژه‌مقادیر $A$ هستند. 
+    
+      \subsection{نمادگذاری دیراک}
+      یک فضای برداری $V$ با بعد $N$ با پایه‌های به‌هنجار $\{e_{1}, e_{2}, e_{3}, ... , e_{N}\}$ درنظر می‌گیریم. هر بردار $v \in V$ بسطی از بردارهای پایه به شکل زیر است: 
+      \begin{equation}
+      	v = \sum_{i=1}^{N} v_{i}e_{i}
+      \end{equation}
+      ضرب داخلی این بردار در خودش به صورت زیر نوشته می‌شود:
+      \begin{equation}
+      	\langle v,v \rangle = \sum_{i=1}^{N} v^{*}_{i} v_{i}
+      \end{equation}
+       می‌توان به ازای چنین برداری، یک بردار ستونی با نماد $\ket{v}$ و یک بردار سطری با نماد $\bra{v}$ به شکل زیر تعریف کرد:
+       \begin{equation}
+       	\ket{v} = \begin{pmatrix}
+       		v_{1} \\ \\ v_{2} \\ \\ \vdots \\ \\ v_{N} 
+       	\end{pmatrix}
+       \end{equation}
+       \begin{equation}
+       	\bra{v} = \begin{pmatrix}
+       		v^{*}_{1} & v^{*}_{2} & \cdots & v^{*}_{N} 
+       	\end{pmatrix}
+       \end{equation}
+       
+       بردار $\bra{v}$ را یک بردار $bra$ و بردار $\ket{v}$ یک بردار $ket$ می‌نامیم. توجه کنیم که ‌می‌توانیم این دو بردار را در هم ضرب کنیم:
+       \begin{equation}
+       		\bra{v}\ket{v} = \sum_{i=1}^{N} v^{*}_{i}v_{i} = \langle v,v \rangle
+       \end{equation}
+       بردار‌های پایه $e_{1}, ... , e_{N}$ نیز شکل زیر را پیدا می‌کنند:
+       
+
+\begin{multicols}{3}
+
+$\ket{1} = \begin{pmatrix} 1 \\ \\ 0 \\ \\ \vdots \\ \\ 0 \end{pmatrix}$
+  \columnbreak{}
+$\ket{2} = \begin{pmatrix} 0 \\ \\ 1 \\ \\ \vdots \\ \\ 0 \end{pmatrix}$
+  \columnbreak{}
+$\ket{N} = \begin{pmatrix} 0 \\ \\ 0 \\ \\ \vdots \\ \\ 1 \end{pmatrix}$
+
+\end{multicols}
+\begin{flushleft}
+$\bra{1} = \begin{pmatrix} 1 & 0 & \cdots & 0 \end{pmatrix}$
+\\
+$\bra{2} = \begin{pmatrix} 0 & 1 & \cdots & 0 \end{pmatrix}$
+\\
+$\bra{N} = \begin{pmatrix} 0 & 0 & \cdots & 1 \end{pmatrix}$
+\\
+\end{flushleft}
+
+بنابراین داریم 
+\begin{equation}
+	\ket{v} = \sum_{i=1}^{N} v_{i}\ket{i}
+\end{equation}
+
+\begin{equation}
+	\bra{v} = \sum_{i=1}^{N} v^{*}_{i}\bra{i}
+\end{equation}
+
+از این به بعد تمامی بردارها را با این نماد‌گذاری نشان می‌دهیم. 
+
+خواص زیر برای این نمادگذاری وجود دارد:
+ \begin{enumerate}
+ 	\item $\bra{v}\ket{w} = \langle v,w \rangle$
+ 	\item $\bra{v}\ket{w+w^{'}} = \bra{v}\ket{w} + \bra{v}\ket{w^{'}}$
+ 	\item $\bra{v}\ket{cw} = c\bra{v}\ket{w}$
+ 	\item $\bra{cv}\ket{w} = c^{*}\bra{v}\ket{w}$
+ 	\item $\bra{v}\ket{v} \geq 0$
+ 	\item $\bra{v}\ket{v} = 0 \rightarrow \ket{v} = \bra{v} = 0$
+ 	\item $\ket{v} = \sum_{i=1}^{N} v_{i}\ket{i}$
+ 	\item $\bra{i}\ket{v} = v_{i}$
+ 	\item $\ket{v}\bra{w} := \begin{pmatrix}
+ 		v_{1}w^{*}_{1} & v_{1}w^{*}_{2} & v_{1}w^{*}_{3} & \cdots & v_{1}w^{*}_{n} \\ 
+ 		\\
+ 		v_{2}w^{*}_{1} & v_{2}w^{*}_{2} & v_{2}w^{*}_{3} & \cdots & v_{2}w^{*}_{n} \\ 
+ 		\\
+ 		v_{3}w^{*}_{1} & v_{3}w^{*}_{2} & v_{3}w^{*}_{3} & \cdots & v_{3}w^{*}_{n} \\ 
+ 		\\
+ 		\vdots & \vdots & \vdots & \ddots & \vdots
+		\\
+ 		v_{N}w^{*}_{1} & v_{N}w^{*}_{2} & v_{N}w^{*}_{3} & \cdots & v_{N}w^{*}_{n} \\ 
+
+ 	\end{pmatrix}$
+ 	\item $\ket{v}\bra{w+w^{'}} = \ket{v}\bra{w} + \ket{v}\bra{w^{'}}$
+ 	\item $\ket{v}\bra{cw} = c^{*}\ket{v}\bra{w}$
+ 	\item $\ket{cv}\bra{w} = c\ket{v}\bra{w}$
+ 	\item $\bra{i}\ket{j} = \delta_{ij}$
+ 	\item $\sum_{i} \ket{i}\bra{i} = I$
+ 	\item $\ket{v} = I\ket{v} = \sum_{i=1}^{N}  \ket{i}\bra{i}\ket{v} = \sum_{i=1}^{N} v_{i}\ket{i}$
+ 	\item $T = \sum_{j} \ket{j}\bra{i}T\sum_{i} \ket{i}\bra{i}  = \sum_{i,j}T_{ji}\ket{j}\bra{i}$
+ 	\item $\mel{i}{AB}{j} = \sum_{k} \mel{i}{AB}{k} \mel{k}{AB}{j} $
+ \end{enumerate}
+ \subsection{ضرب تنسوری}
+ هرگاه $(A)_{m \times n}$ و $(B)_{p \times q}$ دو ماتریس با ابعاد داده شده باشند، می‌توان ضرب تنسوری‌\footnote{Tensor Product} آن‌ها را که ماتریسی با ابعاد $mp \times nq$ است را به شکل زیر تعریف کرد
+ 
+ \begin{equation}
+ 	(A \otimes B)ij,kl := A_{ik}B_{jl}
+ \end{equation}
+ به لحاظ عملی ضرب این دو ماتریس به شکل زیر محاسبه می‌شود:
+ 
+\begin{equation}
+ A \otimes B := \begin{pmatrix}
+ 		a_{11}B & a_{12}B & a_{13}B & \cdots & a_{1n}B \\ 
+ 		\\
+ 		a_{21}B & a_{22}B & a_{23}B & \cdots & a_{2n}B \\ 
+ 		\\
+ 		a_{31}B & a_{32}B & a_{33}B & \cdots & a_{3n}B \\ 
+ 		\\
+ 		\vdots & \vdots & \vdots & \ddots & \vdots
+		\\
+ 		a_{m1}B & a_{m2}B & a_{m3}B & \cdots & a_{mn}B \\ 
+
+ 	\end{pmatrix}
+ \end{equation} 
+
+ 	
+ 	ضرب تنسوری خواص زیر را دارد:
+ 	
+ 	\begin{enumerate}
+ 		\item $A \otimes (B + C) = A \otimes B + A \otimes C$
+ 		\item $A \otimes (\alpha B) = (\alpha A) \otimes B = \alpha (A \otimes B)$
+ 		\item $(A \otimes B) \otimes C = A \otimes ( B \otimes C)$
+ 		\item $(A \otimes B)(C \otimes D) = AC \otimes BD$
+ 		\item $(A \otimes B)^{\dagger} = A^{\dagger} \otimes B^{\dagger}$
+ 	\end{enumerate}
+ 	حال اگر فضای برداری $V$  با بردارهای پایه  $\{\ket{i}, i = 1, ..., m\}$ و فضای برداری $W$ با بردارهای پایه $\{\ket{\mu}, \mu = 1, ..., m\}$ را درنظر بگیریم، می‌توان ضرب تنسوری بردارهای پایه را مطابق با تعریف بالا به دست آوریم. به ترتیب بردار پایه به شکل $\ket{i} \otimes \ket{\mu}$ به دست می‌آوریم که آن‌ها را به اختصار با $\ket{i,\mu}$ نشان می‌دهیم. این بردارهای جدید یک فضای برداری جدید را جاروب\footnote{Span} می‌کنند که با بعد $mn$ است که آن را فضای برداری ضرب تنسوری $W$ و $V$ می‌خوانیم. 
+
+
+نکته‌ آخر این است که یک بردار دلخواه در فضای $V \otimes W$ را نمی‌توان به صورت ضرب‌های $\ket{v} \otimes \ket{w}$ نوشت؛ مثل بردار زیر
+\begin{equation}
+	\ket{\psi} := \ket{0,0} + \ket{1,1}
+\end{equation}
+	این نکته ما را دعوت می‌کند که در مورد خاصیت در‌هم‌تنیدگی در مکانیک کوانتومی بیشتر بررسی کنیم. 
+

@@ -1,0 +1,258 @@
+
+
+    
+
+    
+
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{73}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{dj\PYZus{}oracle}\PY{p}{(}\PY{n}{b\PYZus{}str}\PY{p}{)}\PY{p}{:}
+    \PY{n}{oracle\PYZus{}qc} \PY{o}{=} \PY{n}{QuantumCircuit}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{b\PYZus{}str}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+    \PY{k}{for} \PY{n}{qubit} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{b\PYZus{}str}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{k}{if} \PY{n}{b\PYZus{}str}\PY{p}{[}\PY{n}{qubit}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+            \PY{n}{oracle\PYZus{}qc}\PY{o}{.}\PY{n}{x}\PY{p}{(}\PY{n}{qubit}\PY{p}{)}
+            
+    \PY{k}{for} \PY{n}{qubit} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{b\PYZus{}str}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{oracle\PYZus{}qc}\PY{o}{.}\PY{n}{cx}\PY{p}{(}\PY{n}{qubit}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{b\PYZus{}str}\PY{p}{)}\PY{p}{)}
+        
+    \PY{k}{for} \PY{n}{qubit} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{b\PYZus{}str}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{k}{if} \PY{n}{b\PYZus{}str}\PY{p}{[}\PY{n}{qubit}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+            \PY{n}{oracle\PYZus{}qc}\PY{o}{.}\PY{n}{x}\PY{p}{(}\PY{n}{qubit}\PY{p}{)}
+    
+    \PY{k}{return} \PY{n}{oracle\PYZus{}qc}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{93}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{alice\PYZus{}start} \PY{o}{=} \PY{n}{QuantumCircuit}\PY{p}{(}\PY{l+m+mi}{4}\PY{o}{+}\PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{test}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{alice\PYZus{}start}\PY{o}{.}\PY{n}{x}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+\PY{n}{alice\PYZus{}start}\PY{o}{.}\PY{n}{h}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+\PY{k}{for} \PY{n}{qubit} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+    \PY{n}{alice\PYZus{}start}\PY{o}{.}\PY{n}{h}\PY{p}{(}\PY{n}{qubit}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} oracle\PYZus{}alice = dj\PYZus{}oracle(\PYZsq{}0101\PYZsq{})}
+\PY{c+c1}{\PYZsh{} alice\PYZus{}start.append(tto.circuit, range(4+1+2))}
+\PY{n}{alice\PYZus{}start}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{n}{output}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mpl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{93}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_1_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{60}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{alice\PYZus{}bob\PYZus{}tele\PYZus{}qr} \PY{o}{=} \PY{n}{QuantumRegister}\PY{p}{(}\PY{l+m+mi}{4}\PY{o}{+}\PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mi}{4}\PY{o}{+}\PY{l+m+mi}{4}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{c11}\PY{p}{,}\PY{n}{c12}\PY{p}{,}\PY{n}{c21}\PY{p}{,}\PY{n}{c22}\PY{p}{,}\PY{n}{c31}\PY{p}{,}\PY{n}{c32}\PY{p}{,}\PY{n}{c41}\PY{p}{,}\PY{n}{c42}\PY{p}{,}\PY{n}{c\PYZus{}m} \PY{o}{=} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{ClassicalRegister}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele} \PY{o}{=} \PY{n}{QuantumCircuit}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele\PYZus{}qr}\PY{p}{,}\PY{n}{c11}\PY{p}{,}\PY{n}{c12}\PY{p}{,}\PY{n}{c21}\PY{p}{,}\PY{n}{c22}\PY{p}{,}\PY{n}{c31}\PY{p}{,}\PY{n}{c32}\PY{p}{,}\PY{n}{c41}\PY{p}{,}\PY{n}{c42}\PY{p}{,}\PY{n}{c\PYZus{}m}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{60}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{61}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{alice\PYZus{}start}\PY{p}{,}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{61}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_3_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{62}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{create\PYZus{}bell\PYZus{}pair}\PY{p}{(}\PY{n}{qc}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{h}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{c+c1}{\PYZsh{} Put qubit a into state |+\PYZgt{}}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{cx}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)} \PY{c+c1}{\PYZsh{} CNOT with a as control and b as target}
+\PY{n}{create\PYZus{}bell\PYZus{}pair}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}
+\PY{n}{create\PYZus{}bell\PYZus{}pair}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{create\PYZus{}bell\PYZus{}pair}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{)}
+\PY{n}{create\PYZus{}bell\PYZus{}pair}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{62}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{63}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{alice\PYZus{}gates}\PY{p}{(}\PY{n}{qc}\PY{p}{,} \PY{n}{psi}\PY{p}{,} \PY{n}{a}\PY{p}{)}\PY{p}{:}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{cx}\PY{p}{(}\PY{n}{psi}\PY{p}{,} \PY{n}{a}\PY{p}{)}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{h}\PY{p}{(}\PY{n}{psi}\PY{p}{)}
+\PY{n}{alice\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
+\PY{n}{alice\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
+\PY{n}{alice\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}
+\PY{n}{alice\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{63}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{64}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{measure\PYZus{}and\PYZus{}send}\PY{p}{(}\PY{n}{qc}\PY{p}{,} \PY{n}{psi}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{n}{c1}\PY{p}{,} \PY{n}{c2}\PY{p}{)}\PY{p}{:}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{barrier}\PY{p}{(}\PY{p}{)}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{measure}\PY{p}{(}\PY{n}{psi}\PY{p}{,}\PY{n}{c1}\PY{p}{)}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{measure}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{c2}\PY{p}{)}
+\PY{n}{measure\PYZus{}and\PYZus{}send}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{measure\PYZus{}and\PYZus{}send}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}
+\PY{n}{measure\PYZus{}and\PYZus{}send}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+\PY{n}{measure\PYZus{}and\PYZus{}send}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{65}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{65}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_7_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{66}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{bob\PYZus{}gates}\PY{p}{(}\PY{n}{qc}\PY{p}{,} \PY{n}{qubit}\PY{p}{,} \PY{n}{crz}\PY{p}{,} \PY{n}{crx}\PY{p}{)}\PY{p}{:}
+    \PY{n}{qc}\PY{o}{.}\PY{n}{x}\PY{p}{(}\PY{n}{qubit}\PY{p}{)}\PY{o}{.}\PY{n}{c\PYZus{}if}\PY{p}{(}\PY{n}{crx}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)} \PY{c+c1}{\PYZsh{} Apply gates if the registers }
+    \PY{n}{qc}\PY{o}{.}\PY{n}{z}\PY{p}{(}\PY{n}{qubit}\PY{p}{)}\PY{o}{.}\PY{n}{c\PYZus{}if}\PY{p}{(}\PY{n}{crz}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)} \PY{c+c1}{\PYZsh{} are in the state \PYZsq{}1\PYZsq{}}
+\PY{n}{bob\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{n}{c11}\PY{p}{,} \PY{n}{c12}\PY{p}{)}
+\PY{n}{bob\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{n}{c21}\PY{p}{,} \PY{n}{c22}\PY{p}{)}
+\PY{n}{bob\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{n}{c31}\PY{p}{,} \PY{n}{c32}\PY{p}{)}
+\PY{n}{bob\PYZus{}gates}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{n}{c41}\PY{p}{,} \PY{n}{c42}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{66}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_8_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{16}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{bob\PYZus{}oracle} \PY{o}{=} \PY{n}{dj\PYZus{}oracle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{0101}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{bob\PYZus{}oracle}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{13}\PY{p}{]}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{16}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{67}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{qubit} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{13}\PY{p}{]}\PY{p}{:}
+        \PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{h}\PY{p}{(}\PY{n}{qubit}\PY{p}{)}
+    
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{measure}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{measure}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{measure}\PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{measure}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{)}
+
+\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{67}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{108}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{backend} \PY{o}{=} \PY{n}{BasicAer}\PY{o}{.}\PY{n}{get\PYZus{}backend}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{qasm\PYZus{}simulator}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{shots} \PY{o}{=} \PY{l+m+mi}{1024}
+\PY{n}{results} \PY{o}{=} \PY{n}{execute}\PY{p}{(}\PY{n}{alice\PYZus{}bob\PYZus{}tele}\PY{p}{,} \PY{n}{backend}\PY{o}{=}\PY{n}{backend}\PY{p}{,} \PY{n}{shots}\PY{o}{=}\PY{l+m+mi}{1024}\PY{p}{)}\PY{o}{.}\PY{n}{result}\PY{p}{(}\PY{p}{)}
+\PY{n}{answer} \PY{o}{=} \PY{n}{results}\PY{o}{.}\PY{n}{get\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+\PY{n}{plot\PYZus{}histogram}\PY{p}{(}\PY{n}{answer}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+            
+\prompt{Out}{outcolor}{108}{}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plot\PYZus{}histogram}\PY{p}{(}\PY{n}{answer}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+
+    % Add a bibliography block to the postdoc
+    
+    

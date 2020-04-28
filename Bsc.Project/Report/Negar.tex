@@ -1,0 +1,81 @@
+\documentclass[a4paper,fleqn]{report} 
+%\usepackage{refcheck}
+
+% All the packages and general definitions are included in this file: preamble.tex
+\usepackage{color}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[page,toc,titletoc,title]{appendix}
+% \usepackage{hyperref}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{physics}
+\usepackage{amsthm}
+%\usepackage{xepersian}
+\usepackage{bm}
+\newtheorem{theorem}{قضیه}
+\newtheorem{definition}{تعریف}
+\newtheorem{example}{مثال}
+\newtheorem{lemma}{لم}
+\newtheorem{case}{حالت}
+\newtheorem{assumption}{فرضیه}
+
+\include{preamble}	
+
+\begin{document}
+% The first pages (before abstract) are included in this file: firstpages.tex
+\include{firstpages_negar}	
+\setcounter{page}{1}
+\pagenumbering{arabic}			
+%% The abstract of the paper goes here: abstract.tex
+%\include{abstract}								
+
+%*****************************************************************
+%% تنظیم مناسب صفحه و فونت برای متن اصلی پایان‌نامه
+\newgeometry{left=2.5cm,right=3cm,top=3cm,bottom=2.5cm,includehead=false,headsep=1cm,footnotesep=.5cm}
+
+% \setdigitfont{Times New Roman}
+% \DefaultMathsDigits
+
+\settextfont[ExternalLocation]{Zar.ttf}\fontsize{12}{6}\selectfont
+\baselineskip=.9cm
+
+
+
+% Moving page number to top right
+\pagestyle{myheadings}
+
+\bibliographystyle{acm}
+%*****************************************************************
+
+% Main chapters
+\include{intro}
+\include{deterministic}
+\include{non-deterministic}
+\include{randomized}
+
+\include{DS}
+
+\include{quant-mech}
+\include{quant-comp}
+\include{quant-comm}
+\include{Simulation}
+ 
+\thispagestyle{empty}
+\mbox{}
+\pagebreak
+
+% Appendices
+\appendix
+\include{appendix1}
+\include{ap2}
+\include{references}
+%\include{abstract_english}
+%\include{lastpages}
+
+\end{document}
